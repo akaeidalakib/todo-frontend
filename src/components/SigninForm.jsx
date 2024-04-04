@@ -1,13 +1,10 @@
 import { useForm } from 'react-hook-form';
 import signin from '../http/signin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { UserContext } from '../useHook/UserContext';
 
 const SigninForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const location = useLocation()
-  const { setUserData } = useContext(UserContext);
   const from = location.state?.from?.pathname || "/dashboard";
   console.log('state in the location login page', location.state)
   const navigate = useNavigate()
@@ -18,7 +15,7 @@ const SigninForm = () => {
     if (res.status ==="success") {
         localStorage.setItem("accessToken",res.accessToken)
         localStorage.setItem("refreshToken",res.refreshToken)
-        setUserData(res.data)
+        localStorage.setItem("user",JSON.stringify(res.data))
         navigate(from, { replace: true });
     }
   };

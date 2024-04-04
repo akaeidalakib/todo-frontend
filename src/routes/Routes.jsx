@@ -4,21 +4,24 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import NotFound from "../pages/NotFound/NotFound";
 import PrivateRoute from "../utils/PrivateRoute";
 import Signup from "../pages/signup/Signup";
-// import ErrorBoundary from "../pages/ErrorBoundary/ErrorBoundary";
+import ErrorBoundary from "../pages/ErrorBoundary/ErrorBoundary";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Home/>,
+      errorElement: <ErrorBoundary />
       
     },
     {
       path: "/signup",
       element: <Signup/>,
+      errorElement: <ErrorBoundary />
       
     },
     {
       path: "/dashboard",
+      errorElement: <ErrorBoundary />,
       element:(
         <PrivateRoute> 
           <Dashboard/>
@@ -29,5 +32,4 @@ export const router = createBrowserRouter([
       path: "*",
       element: <NotFound/>,
     },
-    // {errorElement: <ErrorBoundary />}
   ]);

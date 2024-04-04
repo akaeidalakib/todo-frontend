@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../useHook/UserContext';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
-    const {userData,setUserData}=useContext(UserContext)
+  const userData = localStorage.getItem("user")
+    const user =JSON.parse(userData)
+    const navigate = useNavigate();
     const logOut=()=>{
-        setUserData(null)
         localStorage.removeItem('accessToken')
         localStorage.removeItem('refreshToken')
+        localStorage.removeItem('user')
+        navigate(0)
     }
     return (
         <div>
@@ -34,7 +36,7 @@ const Header = () => {
         <Link to={"/dashboard"}>Tasks</Link>
             </button>
       </li>
-      {userData&&(<li className="md:mr-12">
+      {user&&(<li className="md:mr-12">
         <button onClick={logOut} className="rounded-full border-2 border-emerald-500 px-6 py-1 text-emerald-600 transition-colors hover:bg-emerald-500 hover:text-white">Log out</button>
       </li>)}
     </ul>
