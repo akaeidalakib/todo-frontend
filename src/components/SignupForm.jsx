@@ -24,9 +24,9 @@ const SignupForm = () => {
                 {errors.email && <span>This field is required</span>}
               </div>
               <div className="mb-1 sm:mb-2">
-                <label htmlFor="password" className="mb-1 inline-block font-medium text-emerald-900">E-mail</label>
+                <label htmlFor="password" className="mb-1 inline-block font-medium text-emerald-900">password</label>
                 <input placeholder="******"  type="password" className="mb-2 h-12 w-full flex-grow appearance-none rounded border border-gray-300 bg-white px-4 shadow-sm ring-emerald-200 transition duration-200 focus:border-emerald-400 focus:outline-none focus:ring" id="password" name="password" {...register('password', { required: true })} />
-                {errors.email && <span>This field is required</span>}
+                {errors.password && <span>This field is required</span>}
               </div>
               <div className="mt-4 mb-2 sm:mb-4">
                 <button type="submit" className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-emerald-600 px-6 font-medium tracking-wide text-white shadow-md ring-emerald-200 transition duration-200 hover:bg-emerald-700 focus:outline-none focus:ring">Start Trial</button>
